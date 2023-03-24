@@ -1,0 +1,91 @@
+.container{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.Left-Box{
+    width: 40%;
+    padding:  3rem;
+    margin-top: 1.5rem;
+}
+.Right-Box{
+    width: 60%;
+    padding: 3rem;
+    margin-top: 1.5rem;
+}
+.boxes{
+    display: flex;
+}
+
+.boxes > lable {
+ text-align: left;
+font: normal normal normal 24px/33px Open Sans;
+letter-spacing: 0.24px;
+color: #2D2D2E;
+opacity: 1;
+}
+.boxes > input [name="carname"] {
+width: 704px;
+height: 61px;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #CCCCCC;
+border-radius: 4px;
+opacity: 1;
+}
+.flex{
+    display: flex;
+}
+.flex-dir-c{
+    flex-direction: column;
+}
+.flex-dir-r{
+    flex-direction: row;
+}
+.j-content{
+    justify-content: space-between;
+}
+.inp-carname{
+    width: 400px;
+    height: 50px;
+}
+.m-t{
+    margin-top: 1rem;
+}
+.m-b{
+    margin-bottom: 1rem;
+}
+.m-r{
+    margin-right: 5rem;
+}
+.m-l{
+    margin-left: 5rem;
+}
+
+input{
+    border: 1px solid #CCCCCC;
+    border-radius: 0.5rem;
+    height: 3rem;
+}
+.description > input {
+    height: 8rem;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+
+
+}
+
+.Right-Box > .cardetails >input {
+    width: 80%;
+    height:10rem ;
+}
+.Right-Box > .details >input {
+    width: 80%;
+    height:10rem ;
+}
+.btn-add,.btn-cancel{
+    padding: 0.7rem 1.5rem;
+}
