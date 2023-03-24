@@ -9,7 +9,8 @@ const connectDB = require('./config/db');
 //env config
 dotenv.config();
 
-//routes import
+
+//routes are imported here
 const userRoutes = require('./routes/userRoutes');
 
 //mongodb connection
