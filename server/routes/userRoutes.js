@@ -1,6 +1,9 @@
 const express = require('express');
 const { getAlluser, registerController, loginController } = require('../controllers/userController');
+<<<<<<< HEAD
 const Cardetails = require("../models/CarModel")
+=======
+>>>>>>> 30b594eb4139c782379419b1321110d829d49c54
 
 //router object 
 const router = express.Router();//Routing refers to how an application's endpoints (URIs) respond to client requests
@@ -13,6 +16,7 @@ router.post('/register',registerController)
 
 //CREATE LOGIN || POST
 router.post('/login',loginController)
+<<<<<<< HEAD
 
 //CREATE LOGIN || POST
 router.post('/adminlogin',loginController)
@@ -79,3 +83,10 @@ router.get("/adminpage", async (req, res) => {
 module.exports = router;
 
 
+=======
+module.exports = router;
+
+//CREATE LOGIN || POST
+router.post('/adminlogin',loginController)
+module.exports = router;
+>>>>>>> 30b594eb4139c782379419b1321110d829d49c54
