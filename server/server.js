@@ -4,42 +4,38 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
- 
 
-//env config
+// env config
 dotenv.config();
 
-
-//routes are imported here
+// routes are imported here
 const userRoutes = require('./routes/userRoutes');
 
-//mongodb connection
-connectDB();
+// mongodb connection
+connectDB(); // connect to the first database
 
-//rest objects
+// rest objects
 const app = express();
 
-//middlewares
+// middlewares
 app.use(cors());
 app.use(express.json());
 // app.use(morgan('dev'))//when url click it will show in console.{network request will show}
 
-//routes
-app.get('/',(req,res)=>{
-    res.status(200).send({
-        message:'sourabh dudhale'
-    })
-    
+// routes
+app.get('/', (req, res) => {
+  res.status(200).send({
+    message: 'sourabh dudhale'
+  })
+
 })
 
-app.use('/api/v1/user',userRoutes);
+app.use('/api/v1/user', userRoutes);
 
-
-//port 
+// port 
 const PORT = process.env.PORT || 8080;
 
-//listen
-
-app.listen(PORT,()=>{
-    console.log(`server is running on ${process.env.DEV_MODE} port no ${PORT}`);
+// listen
+app.listen(PORT, () => {
+  console.log(`server is running on ${process.env.DEV_MODE} port no ${PORT}`);
 })
