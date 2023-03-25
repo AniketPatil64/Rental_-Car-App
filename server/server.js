@@ -4,24 +4,6 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
-<<<<<<< HEAD
-
-// env config
-dotenv.config();
-
-// routes are imported here
-const userRoutes = require('./routes/userRoutes');
-
-// mongodb connection
-connectDB(); // connect to the first database
-
-// rest objects
-const app = express();
-
-// middlewares
-=======
- 
-
 //env config
 dotenv.config();
 
