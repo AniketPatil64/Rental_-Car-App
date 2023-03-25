@@ -1,0 +1,109 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #CBCBCB29;
+    border: 1px solid #f0f0f0;
+    opacity: 1;
+    padding: 1rem;
+    height: 3rem;
+}
+
+.logo {
+    color: #007FED;
+    padding-left: 2rem;
+    letter-spacing: 2.4px;
+    font-weight: bold;
+}
+.bookings{
+    padding-right: 2rem;
+    font: normal normal medium 20px/25px Helvetica Neue;
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 1;
+} 
+
+
+.logout {
+    padding-right: 2rem;
+    font: normal normal medium 20px/25px Helvetica Neue;
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 1;
+}
+.nav{
+    padding-right: 2rem;
+    font: normal normal medium 20px/25px Helvetica Neue;
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 1;
+}
+.home{
+    
+    height: 500px;
+    width: 500px;
+    border: 1px solid black ;
+    margin-top: 150px;
+    margin-left: 100px;
+    border-radius: 20px;
+    background-color:#FFFFFF;
+   
+
+}
+.total{
+    
+    background-image: url("./Rentalcar.png" );
+   background-size: cover;
+
+   
+   
+}
+
+.startdate{
+    height: 40px;
+    width: 450px;
+    border: 1px solid black;
+    border-radius: 40px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+.enddate{
+    height: 40px;
+    width: 450px;
+    border: 1px solid black;
+    border-radius:40px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+
+.origin{
+    height: 40px;
+    width: 450px;
+    border: 1px solid black;
+    border-radius:50px;
+  margin-left: 10px;
+    margin-bottom: 20px;
+
+}
+.destination{
+    height: 40px;
+    width: 450px;
+    border: 1px solid black;
+    border-radius:50px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+.text{
+    text-align: left;
+    padding-left: 30px;
+}
+.button{
+    height: 50px;
+    width: 100px;
+    border: 1px solid white;
+    border-radius: 50px;
+    margin-left: 350px;
+    color: #FFFFFF;
+    background-color: #007FED;
+}
