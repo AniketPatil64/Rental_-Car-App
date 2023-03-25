@@ -1,0 +1,51 @@
+.registerform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 477px;
+    height: 601px;
+}
+
+.registerform {
+    position: absolute;
+    top: 200px;
+    left: 1250px;
+    padding-top:50px ;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    opacity: 1;
+
+}
+
+.registerform button{
+    float: right;
+}
+
+input{
+    padding-left: 30px;
+    height: 40px;
+    width: 370px;
+    
+}
+
+h5{
+    text-align: left;
+    font: normal normal normal 22px/30px Open Sans;
+    letter-spacing: 0.53px;
+    color: #1B2734;
+    opacity: 1;
+}
+
+
+button {
+    width: 128px;
+    height: 48px;
+    position:relative;
+    top: 80px;
+    color: #FFFFFF;
+    background: #4E94F4 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    opacity: 1;
+    float: right;
+}
+
