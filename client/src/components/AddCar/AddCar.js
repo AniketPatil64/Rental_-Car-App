@@ -3,9 +3,10 @@ import Header from "../Header/Header";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import axios from "axios"
-
 import "./AddCar.css";
+
 function AddCar() {
+  const [image,setimage] = useState();
   const [formdata,setformdata] = useState({
     carname:"",
     type:"",
@@ -14,29 +15,56 @@ function AddCar() {
     perkm:"",
     availablefrom:"",
     availabletill:"",
-    image:"",
+    image: "",
     description:"",
     cardetails:"",
     details:""
   });
+
 const HandleChange = (e)=>{
-  const {name,value} = e.target
+  const {name,value} = e.target;
   setformdata({
     ...formdata,
     [name]:value
   })
-  console.log(formdata)
-
 }
+const HandleImage = ()=>{
+  const data = new FormData();
+  data.append("file",image);
+  data.append("upload_preset","Car-Images")
+  data.append("cloud_name","dplbl7yg9")
+  fetch("https://api.cloudinary.com/v1_1/dplbl7yg9/image/upload",{
+    method:"post",
+    body:data
+  })
+  .then((resp)=>{
+    resp.json()
+  })
+  .then((data)=>{
+    console.log(data)
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+// const HandleImageChange = (e) => {
+//   const files = 
+  
+// };
+
+
 
 const Submitdata =() =>{
-    axios.post("http://localhost:3002/newcar",formdata)
+    axios.post("http://localhost:3030/newcar",formdata)
     .then((resp)=>{
-      console.log(resp)
+      resp.json()
+    }).then((data)=>{
+      console.log(data)
     })
     .catch((err)=>{
       console.log(err);
     })
+    console.log(formdata)
 }
   return (
     <form className="container">
@@ -131,7 +159,9 @@ const Submitdata =() =>{
             <input 
             type="file" 
             name="image"
-            className="inp-img" onChange={HandleChange}/>
+            className="inp-img"
+            onChange={(e)=>{setimage(e.target.files[0])}}
+            />
           </div>
 
           <div className="cardetails flex flex-dir-c">

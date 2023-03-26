@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Data } from '../data/Data.js';
-import { Button } from 'react-bootstrap';
+import { Button, ButtonGroup } from 'react-bootstrap';
 import './Adminpage.css';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header.js';
@@ -15,8 +15,9 @@ function AdminPage() {
   return (
     <>
       <div className="container">
-      <Header/>
+      {/* <Header/> */}
       <h1 className='Hello'>Hello Admin ...</h1>
+      <button>add</button>
       <div className='Headerbar'>
       <h4>Cars</h4>
         <Button 

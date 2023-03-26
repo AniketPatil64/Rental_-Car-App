@@ -1,16 +1,16 @@
-// import React from 'react'
-// import AdminPage from "./components/Adminpage/AdminPage"
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// 
+import React from 'react'
+import AdminPage from "./components/Adminpage/AdminPage"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// function Admin() {
-//   return (
-//     <BrowserRouter className='app-div'>
-//     <Routes>
+
+function Admin() {
+  return (
+    <BrowserRouter className='app-div'>
+    <Routes>
      
-//     </Routes>
-//   </BrowserRouter>
-//   )
-// }
+    </Routes>
+  </BrowserRouter>
+  )
+}
 
-// export default Admin
+export default Admin
