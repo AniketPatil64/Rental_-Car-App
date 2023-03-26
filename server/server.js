@@ -25,7 +25,7 @@ app.use(express.json());
 // routes
 app.get('/', (req, res) => {
   res.status(200).send({
-    message: 'sourabh dudhale'
+    message: 'welcome to backend'
   })
 
 })
@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 app.use('/api/v1/user', userRoutes);
 
 // port 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 // listen
 app.listen(PORT, () => {

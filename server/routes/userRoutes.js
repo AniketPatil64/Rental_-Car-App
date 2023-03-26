@@ -28,42 +28,19 @@ router.get("/adminpage", async (req, res) => {
   });
 
 
-  router.post("/newcar", async (req, resp) => {
-    console.log(req.body);
-    const {
-      carname,
-      type,
-      model,
-      milage,
-      perkm,
-      availablefrom,
-      availabletill,
-      image,
-      description,
-      cardetails,
-      details,
-    } = req.body;
-    const CarData = new Cardetails({
-      carname,
-      type,
-      model,
-      milage,
-      perkm,
-      availablefrom,
-      availabletill,
-      image,
-      description,
-      cardetails,
-      details,
-    });
-    CarData.save()
-      .then(() => {
-        resp.send({ message: "successful" });
-      })
-      .catch((err) => {
-        resp.send({ message: err });
-        console.log(err);
-      });
+  router.post("/newcar", async (req, res) => {
+    console.log(req.body)
+    try {
+      const { carname, type, model, milage, perkm, availablefrom, availabletill,image, description, cardetails, details } =  req.body
+      
+      const carData = new Cardetails({ carname, type, model, milage, perkm, availablefrom, availabletill, image, description, cardetails, details });
+      await carData.save();
+  
+      res.status(201).json({ message: 'Car details saved successfully' });
+    } catch(error){
+      console.error(error);
+      res.status(500).json({ error:'Internal server error'});
+    }
   });
 
 
