@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "./AddCar.css";
 
 function AddCar() {
   const [image, setimage] = useState();
   const [url,seturl] = useState("");
+  const navigate = useNavigate();
+  
   const [formdata, setformdata] = useState({
     carname: "",
     type: "",
@@ -28,6 +31,7 @@ function AddCar() {
       ...formdata,
       [name]: value,
     });
+
   };
   const HandleImage = () => {
     const data = new FormData();
@@ -39,18 +43,20 @@ function AddCar() {
       body: data
     })
       .then(resp=> resp.json())
-      .then((data)=>  setformdata({
+      .then((data)=> { 
+        setformdata({
         ...formdata,
         image: data.url
-      }))
+      });
+    })
       .catch((err) => {console.log(err)});
     
   };
   const Submitdata = () => {
-    axios
-      .post("http://localhost:3030/newcar", (formdata))
+    axios.post("http://localhost:3030/api/v1/user/newcar", (formdata))
       .then((resp) => {
         resp.json();
+      
       })
       .then((data)=>{
         seturl(data.url);
@@ -64,6 +70,7 @@ function AddCar() {
       });
     console.log(formdata);
     console.log(url)
+    navigate('/adminPage')
   };
   return (
     <form className="container">
@@ -189,7 +196,8 @@ function AddCar() {
       </div>
       <div className="btns flex j-content ">
         <div className="btn-cancel ">
-          <Button variant="secondary btn-cancel m-r">Cancel</Button>
+          <Button variant="secondary btn-cancel m-r"
+          onClick={()=>{navigate('/adminPage')}}>Cancel</Button>
         </div>
         <div className="bnt-add">
           <Button

@@ -24,9 +24,9 @@ const carSchema =  mongoose.Schema({
         type:String,
         required:[true,'availablefrom date is required']
     },
-    availabletilll:{
+    availabletill:{
         type:String,
-        required:[true,'availabletilll date is required']
+        required:[true,'availabletill date is required']
     },
     image:{
         type:String

@@ -3,25 +3,23 @@ import { Data } from '../data/Data.js';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import './Adminpage.css';
 import { useNavigate } from 'react-router-dom';
-import Header from '../Header/Header.js';
 import axios from 'axios';
 
 function AdminPage() {
   const [cardetails,setcardetails] = useState(false);
+  const [data,setdata] = useState([])
    const navigate = useNavigate();
    const EditCarDetailPage =()=>{
     navigate("/editcar")
     setcardetails(true)
    }
    useEffect(()=>{
-    axios.get('https://localhost:8080/adminpage')
-     .then((response) => {
-    console.log(response.data); 
+    axios.get("http://localhost:3030/api/v1/user/adminpage")
+    .then((resp)=>{
+      setdata(resp.data)
+      console.log(data)
     })
-    .catch((error) => {
-    console.error(error);
-  });
-   })
+  },[data.length])
   return (
     <>
       <div className="container">
@@ -32,7 +30,7 @@ function AdminPage() {
       <h4>Cars</h4>
         <Button 
         variant="primary" 
-        className='btn'
+        className='btn1'
         onClick={()=>{navigate("/addcar")}}>Add Cars</Button>
       </div>
         <div className="card-container">
@@ -49,6 +47,22 @@ function AdminPage() {
               </div>
               <div>
                 <p className='available'>available date : {item['available Date']}</p>
+              </div>
+            </div>
+          ))}
+          {data.map((item, index) => (
+            <div key={index} className="card">
+              <img src={item.image} 
+              alt={item.name}
+              onClick={()=>{EditCarDetailPage()}}
+              />
+              <p className='seat'>5 Persons</p>
+              <div className="card-details">
+                <h3>{item.carname}</h3>
+                <p className='RSKM'>{item.milage}Rs/Km</p>
+              </div>
+              <div>
+                <p className='available'>available date : {item.availablefrom}</p>
               </div>
             </div>
           ))}

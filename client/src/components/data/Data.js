@@ -29,48 +29,6 @@ export const Data =[
       "available Date":"01-Apr-15-Apr"
    },
    {
-      "img":"https://th.bing.com/th/id/OIP.29ZWAnIi285Zz2XWY1gp0AHaEN?pid=ImgDet&rs=1" ,
-      "seater":5,
-      "name": "Alto",
-      "rateperkm":150,
-      "available Date":"01-Apr-15-Apr"
-   },
-   {
-      "img":"https://th.bing.com/th/id/OIP.29ZWAnIi285Zz2XWY1gp0AHaEN?pid=ImgDet&rs=1" ,
-      "seater":5,
-      "name": "Alto",
-      "rateperkm":150,
-      "available Date":"01-Apr-15-Apr"
-   },
-   {
-      "img":"https://th.bing.com/th/id/OIP.29ZWAnIi285Zz2XWY1gp0AHaEN?pid=ImgDet&rs=1" ,
-      "seater":5,
-      "name": "Alto",
-      "rateperkm":150,
-      "available Date":"01-Apr-15-Apr"
-   },
-   {
-      "img":"https://th.bing.com/th/id/OIP.29ZWAnIi285Zz2XWY1gp0AHaEN?pid=ImgDet&rs=1" ,
-      "seater":5,
-      "name": "Alto",
-      "rateperkm":150,
-      "available Date":"01-Apr-15-Apr"
-   },
-   {
-      "img":"https://th.bing.com/th/id/OIP.29ZWAnIi285Zz2XWY1gp0AHaEN?pid=ImgDet&rs=1" ,
-      "seater":5,
-      "name": "Alto",
-      "rateperkm":150,
-       "available Date":"01-Apr-15-Apr"
-   },
-   {
-      "img":"https://th.bing.com/th/id/OIP.Dr--AU8JKIawP2cuvd5X0wHaE8?w=204&h=180&c=7&r=0&o=5&pid=1.7" ,
-      "seater":5,
-      "name": "Old-Benz",
-      "rateperkm":150,
-       "available Date":"01-Apr-15-Apr"
-   },
-   {
       "img":"https://th.bing.com/th/id/OIP.cl2JyY3sEP3evP1PH3eVfAHaFj?w=228&h=180&c=7&r=0&o=5&pid=1.7" ,
       "seater":5,
       "name": "Swift",

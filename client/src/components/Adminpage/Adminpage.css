@@ -51,6 +51,10 @@
 .available{
     color:  rgba(0, 0, 0, 0.5);
 }
+.btn1{
+  position: absolute;
+  right: 300px;
+}
 .flex{
   display: flex;
 }

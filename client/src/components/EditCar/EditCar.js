@@ -2,8 +2,10 @@ import React from "react";
 import Header from "../Header/Header";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
 import "../AddCar/AddCar.css";
 function EditCar() {
+  const navigate = useNavigate();
   return (
     <form className="container">
       {/* <Header /> */}
@@ -87,7 +89,8 @@ function EditCar() {
       </div>
       <div className="btns flex j-content ">
         <div className="btn-cancel ">
-          <Button variant="secondary btn-cancel m-r">Cancel</Button>
+          <Button variant="secondary btn-cancel m-r"
+          onClick={()=>{navigate('/adminPage')}}>Cancel</Button>
         </div>
         <div className="bnt-add">
           <Button variant="primary" className="btn-add m-l">
