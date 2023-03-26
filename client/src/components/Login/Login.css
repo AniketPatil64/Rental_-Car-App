@@ -3,7 +3,6 @@
     width: 100%;
     position: fixed; 
 }
-
 .image .line{
     position: absolute;
     top: 300px;
@@ -90,7 +89,6 @@ input {
 
 /* .flex{
      display: flex;
-
    }
    .flex-row{
      flex-direction: row;
@@ -130,7 +128,7 @@ input {
         color: #FFFFFF;
         opacity: 1;
         cursor: pointer;
-    
+
 }
 
 .forgot-password-link{
