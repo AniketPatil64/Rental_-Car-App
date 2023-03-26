@@ -3,10 +3,11 @@ import Header from "../Header/Header";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import axios from "axios"
-import "./AddCar.css";
 
+import "./AddCar.css";
 function AddCar() {
-  const [image,setimage] = useState();
+  const [Image, setimage] = useState();
+  const [url,seturl] = useState("");
   const [formdata,setformdata] = useState({
     carname:"",
     type:"",
@@ -15,56 +16,50 @@ function AddCar() {
     perkm:"",
     availablefrom:"",
     availabletill:"",
-    image: "",
+    image:"",
     description:"",
     cardetails:"",
     details:""
   });
 
+  //form making image ulr 
+  const HandleImage = () => {
+    const data = new FormData();
+    data.append("file", Image);
+    data.append("upload_preset", "Car-Images");
+    data.append("cloud_name", "dplbl7yg9");
+    fetch("https://api.cloudinary.com/v1_1/dplbl7yg9/image/upload", {
+      method: "post",
+      body: data
+    })
+      .then(resp=> resp.json())
+      .then((data)=>  setformdata({
+        ...formdata,
+        image: data.url
+      }))
+      .catch((err) => {console.log(err)});
+    
+  };
+
+  //form sumitting all the data 
 const HandleChange = (e)=>{
-  const {name,value} = e.target;
+  const {name,value} = e.target
   setformdata({
     ...formdata,
     [name]:value
   })
-}
-const HandleImage = ()=>{
-  const data = new FormData();
-  data.append("file",image);
-  data.append("upload_preset","Car-Images")
-  data.append("cloud_name","dplbl7yg9")
-  fetch("https://api.cloudinary.com/v1_1/dplbl7yg9/image/upload",{
-    method:"post",
-    body:data
-  })
-  .then((resp)=>{
-    resp.json()
-  })
-  .then((data)=>{
-    console.log(data)
-  })
-  .catch((err)=>{
-    console.log(err)
-  })
-}
-// const HandleImageChange = (e) => {
-//   const files = 
-  
-// };
+  console.log(formdata)
 
-
+}
 
 const Submitdata =() =>{
     axios.post("http://localhost:8080/newcar",formdata)
     .then((resp)=>{
-      resp.json()
-    }).then((data)=>{
-      console.log(data)
+      console.log(resp)
     })
     .catch((err)=>{
       console.log(err);
     })
-    console.log(formdata)
 }
   return (
     <form className="container">
@@ -159,10 +154,16 @@ const Submitdata =() =>{
             <input 
             type="file" 
             name="image"
-            className="inp-img"
-            onChange={(e)=>{setimage(e.target.files[0])}}
-            />
+            className="inp-img" 
+            onChange={()=>{setimage(e.target.files[0])}}/>
           </div>
+          <div> <Button
+              variant="primary"
+              className="btn-add m-l"
+              onClick={HandleImage}
+            >
+              Add
+            </Button></div>
 
           <div className="cardetails flex flex-dir-c">
             <label>Car Details :</label>
