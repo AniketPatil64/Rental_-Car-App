@@ -2,11 +2,11 @@ import React from "react";
 import Header from "../Header/Header";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
-import "../AddCar/AddCar.css";
+import "./EditCar.css";
 function EditCar() {
   return (
     <form className="container">
-      <Header />
+      {/* <Header /> */}
       <div className="boxes">
         <div className="Left-Box">
           <div className="carName flex flex-dir-c m-t m-b">
@@ -35,8 +35,8 @@ function EditCar() {
             </div>
           </div>
 
-          <div className="availablefrom flex j-content m-t m-b">
-            <div className="milage flex flex-dir-c">
+          <div className="availablefrom flex m-t m-b">
+            <div className="milage flex flex-dir-c m-r">
               <Form>
                 <Form.Group controlId="availabletill">
                   <Form.Label>Available From:</Form.Label>

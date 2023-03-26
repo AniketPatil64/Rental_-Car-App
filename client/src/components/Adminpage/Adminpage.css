@@ -10,7 +10,7 @@
   margin-left: 10rem;
 }
 .Headerbar{
-  margin-top:35px;
+ 
   display: flex;
   justify-content: space-between;
   margin: 1rem 5rem 1rem 5rem; 
@@ -58,5 +58,29 @@
 .available{
     color:  rgba(0, 0, 0, 0.5);
 }
+.flex{
+  display: flex;
+}
+.flex-dir-c{
+  flex-direction: column;
+}
+.flex-dir-r{
+  flex-direction: row;
+}
+.j-content{
+  justify-content: space-between;
+}
 
+.m-t{
+  margin-top: 1rem;
+}
+.m-b{
+  margin-bottom: 1rem;
+}
+.m-r{
+  margin-right: 5rem;
+}
+.m-l{
+  margin-left: 5rem;
+}
   
