@@ -1,13 +1,40 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios'
 function AdminLogin() {
     const navigate = useNavigate();
-    const [emailOrPhone, setEmailOrPhone] = useState("");
-    const [password, setPassword] = useState("");
+    const [formdata,setformdata]=useState({
+        name:"",
+        password:""
+    })
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const HandleChange = (e)=>{
+        const {name,value} = e.target
+        setformdata({
+          ...formdata,
+          [name]:value
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); // prevent default form submission behavior
+
+        // send a POST request to your backend API endpoint with user's email and password
+        axios.post('/api/v1/user/adminlogin', {
+          email: formdata.email,
+          password: formdata.password
+        })
+        .then((response) => {
+          // handle success response from server
+          console.log(response.data);
+          navigate('/dashbord'); // redirect user to dashboard after successful login
+        })
+        .catch((error) => {
+          // handle error response from server
+          console.error(error);
+          // display error message to user
+          alert('Invalid email or password. Please try again.');
+        });
     };
   return (
     <div className='login flex flex-col'>
@@ -22,7 +49,7 @@ function AdminLogin() {
                     <span className='register' onClick={() => navigate('/')}>
                         User sign in
                     </span>
-                    
+
                 </div>
                 </div>
                 <div className='right'>
@@ -32,16 +59,16 @@ function AdminLogin() {
                         <input
                             type="text"
                             id='email'
-                            value={emailOrPhone}
-                            onChange={(event) => setEmailOrPhone(event.target.value)}
+                            name='email'
+                            onChange={HandleChange}
                             placeholder='Phone Number or Email'
                         />
                         <br />
                         <input
                             type="password"
                             id='password'
-                            value={password}
-                            onChange={(event) => setPassword(event.target.value)}
+                            name='password'
+                            onChange={HandleChange}
                             placeholder='Password'
                         />
                         <br/>
