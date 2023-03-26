@@ -6,6 +6,8 @@ import axios from "axios"
 
 import "./AddCar.css";
 function AddCar() {
+  const [Image, setimage] = useState();
+  const [url,seturl] = useState("");
   const [formdata,setformdata] = useState({
     carname:"",
     type:"",
@@ -19,6 +21,27 @@ function AddCar() {
     cardetails:"",
     details:""
   });
+
+  //form making image ulr 
+  const HandleImage = () => {
+    const data = new FormData();
+    data.append("file", Image);
+    data.append("upload_preset", "Car-Images");
+    data.append("cloud_name", "dplbl7yg9");
+    fetch("https://api.cloudinary.com/v1_1/dplbl7yg9/image/upload", {
+      method: "post",
+      body: data
+    })
+      .then(resp=> resp.json())
+      .then((data)=>  setformdata({
+        ...formdata,
+        image: data.url
+      }))
+      .catch((err) => {console.log(err)});
+    
+  };
+
+  //form sumitting all the data 
 const HandleChange = (e)=>{
   const {name,value} = e.target
   setformdata({
@@ -131,8 +154,16 @@ const Submitdata =() =>{
             <input 
             type="file" 
             name="image"
-            className="inp-img" onChange={HandleChange}/>
+            className="inp-img" 
+            onChange={()=>{setimage(e.target.files[0])}}/>
           </div>
+          <div> <Button
+              variant="primary"
+              className="btn-add m-l"
+              onClick={HandleImage}
+            >
+              Add
+            </Button></div>
 
           <div className="cardetails flex flex-dir-c">
             <label>Car Details :</label>
