@@ -55,7 +55,7 @@ const HandleImage = ()=>{
 
 
 const Submitdata =() =>{
-    axios.post("http://localhost:3030/newcar",formdata)
+    axios.post("http://localhost:8080/newcar",formdata)
     .then((resp)=>{
       resp.json()
     }).then((data)=>{
