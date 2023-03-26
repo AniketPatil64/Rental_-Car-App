@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../Header/Header";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
-import "./EditCar.css";
+import "../AddCar/AddCar.css";
 function EditCar() {
   return (
     <form className="container">

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Data } from '../data/Data.js';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import './Adminpage.css';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header.js';
+import axios from 'axios';
 
 function AdminPage() {
   const [cardetails,setcardetails] = useState(false);
@@ -12,6 +13,15 @@ function AdminPage() {
     navigate("/editcar")
     setcardetails(true)
    }
+   useEffect(()=>{
+    axios.get('https://localhost:8080/adminpage')
+     .then((response) => {
+    console.log(response.data); 
+    })
+    .catch((error) => {
+    console.error(error);
+  });
+   })
   return (
     <>
       <div className="container">

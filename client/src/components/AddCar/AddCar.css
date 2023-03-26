@@ -1,27 +1,24 @@
 .container{
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin: 40px auto;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    opacity: 1;
+    height: 900px;
 }
-
 .Left-Box{
-    width: 40%;
+    width: 50%;
     padding:  3rem;
     margin-top: 1.5rem;
 }
 .Right-Box{
-    width: 60%;
+    width: 70%;
     padding: 3rem;
     margin-top: 1.5rem;
 }
 .boxes{
     display: flex;
 }
-
+.Left-Box {
+    width: 60%;
+    padding: 0rem;
+    margin-top: 1.5rem;
+}
 .boxes > lable {
  text-align: left;
 font: normal normal normal 24px/33px Open Sans;
@@ -30,12 +27,27 @@ color: #2D2D2E;
 opacity: 1;
 }
 .boxes > input [name="carname"] {
-width: 704px;
-height: 61px;
+width: 600px;
+height: 25px;
 background: #FFFFFF 0% 0% no-repeat padding-box;
 border: 1px solid #CCCCCC;
 border-radius: 4px;
 opacity: 1;
+}
+.Right-Box > .image{
+    height: 10rem;
+}
+.btn-upload>button{
+    margin-top: 0px;
+}
+
+.Right-Box > .cardetails >input {
+    width: 400px;
+    height: 4rem;
+}
+.Right-Box > .details >input{
+     width: 400px;
+     height: 4rem;
 }
 .flex{
     display: flex;
@@ -50,7 +62,7 @@ opacity: 1;
     justify-content: space-between;
 }
 .inp-carname{
-    width: 400px;
+    width: 800px;
     height: 50px;
 }
 .m-t{
@@ -65,27 +77,32 @@ opacity: 1;
 .m-l{
     margin-left: 5rem;
 }
-
+.m-r2{
+    margin-right:2.5rem ;
+}
+.m-l2{
+    margin-right:10rem ;
+}
 input{
     border: 1px solid #CCCCCC;
     border-radius: 0.5rem;
-    height: 3rem;
 }
 .description > input {
     height: 8rem;
     background: #FFFFFF 0% 0% no-repeat padding-box;
-
-
+}
+.Right-Box > .image > input{
+    border: 1px solid #CCCCCC;
+    border-radius: 0.5rem;
 }
 
-.Right-Box > .cardetails >input {
-    width: 80%;
-    height:10rem ;
-}
+
 .Right-Box > .details >input {
-    width: 80%;
-    height:10rem ;
+    width: 400px;
+    height: 4rem;
 }
 .btn-add,.btn-cancel{
     padding: 0.7rem 1.5rem;
 }
+
+
