@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Data } from '../data/Data.js';
-import { Button, ButtonGroup } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './Adminpage.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+export function MainId(idd) {
+  return idd;
+}
 function AdminPage() {
   const [cardetails,setcardetails] = useState(false);
   const [data,setdata] = useState([])
+  const [id,setid] = useState("")
    const navigate = useNavigate();
-   const EditCarDetailPage =()=>{
-    navigate("/editcar")
-    setcardetails(true)
+
+   const EditCarDetailPage =(ID)=>{
+    MainId(ID)
+    navigate(`/editcar/:${ID}`)
    }
    useEffect(()=>{
     axios.get("http://localhost:3030/api/v1/user/adminpage")
@@ -38,7 +42,6 @@ function AdminPage() {
             <div key={index} className="card">
               <img src={item.img} 
               alt={item.name}
-              onClick={()=>{EditCarDetailPage()}}
               />
               <p className='seat'>{item.seater} Persons</p>
               <div className="card-details">
@@ -54,7 +57,7 @@ function AdminPage() {
             <div key={index} className="card">
               <img src={item.image} 
               alt={item.name}
-              onClick={()=>{EditCarDetailPage()}}
+              onClick={()=>{EditCarDetailPage(item._id)}}
               />
               <p className='seat'>5 Persons</p>
               <div className="card-details">

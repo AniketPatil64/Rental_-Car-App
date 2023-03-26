@@ -21,7 +21,7 @@ function App() {
         <Route path='/' element={<Login/>} />
         <Route path='/adminPage' element={<AdminPage/>}/>
         <Route path='/addcar' element={<AddCar/>}/>
-        <Route path='/editcar' element={<EditCar/>}/>
+        <Route path='/editcar/:id' element={<EditCar/>}/>
         <Route path='/bookingcar' element={<CarBooking/>}/>
       </Routes>
     </BrowserRouter>

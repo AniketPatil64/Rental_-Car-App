@@ -44,13 +44,69 @@ router.get("/adminpage", async (req, res) => {
   });
 
 
-  router.put("/editcar", (req, resp) => {
-    resp.send("editcar");
-  });
 
-  router.delete("/editcar", (req, resp) => {
-    resp.send("delete");
-  });
+router.put(`/editcar/:id`, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {
+      carname,
+      type,
+      model,
+      milage,
+      perkm,
+      availablefrom,
+      availabletill,
+      image,
+      description,
+      cardetails,
+      details,
+    } = req.body;
+
+    const car = await Cardetails.findById({_id:id});
+
+    if (!car) {
+      return res.status(404).json({ error: "Car not found" });
+    }
+
+    car.carname = carname || car.carname;
+    car.type = type || car.type;
+    car.model = model || car.model;
+    car.milage = milage || car.milage;
+    car.perkm = perkm || car.perkm;
+    car.availablefrom = availablefrom || car.availablefrom;
+    car.availabletill = availabletill || car.availabletill;
+    car.image = image || car.image;
+    car.description = description || car.description;
+    car.cardetails = cardetails || car.cardetails;
+    car.details = details || car.details;
+
+    const updatedCar = await car.save();
+
+    res.status(200).json({ message: "Car details updated successfully", data: updatedCar });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+router.delete("/editcar/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const car = await Cardetails.findById(id);
+
+    if (!car) {
+      return res.status(404).json({ error: "Car not found" });
+    }
+
+    await car.remove();
+
+    res.status(200).json({ message: "Car deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 
 module.exports = router;
