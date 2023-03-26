@@ -27,7 +27,7 @@ function AdminLogin() {
         .then((response) => {
           // handle success response from server
           console.log(response.data);
-          navigate('/dashbord'); // redirect user to dashboard after successful login
+          navigate('/adminpage'); // redirect user to dashboard after successful login
         })
         .catch((error) => {
           // handle error response from server
