@@ -5,7 +5,10 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import AdminLogin from './components/AdminLogin/AdminLogin';
 import Header from './components/Header/Header';
-
+import AddCar from './components/AddCar/AddCar';
+import EditCar from './components/EditCar/EditCar';
+import CarBooking from './components/Carbookings/CarBooking';
+import AdminPage from './components/Adminpage/AdminPage';
 
 function App() {
   return (
@@ -14,8 +17,12 @@ function App() {
       <Header />
       <Routes>
         <Route path='/register' element={<Register />} />
-        <Route path='/adminlogin' element={<AdminLogin />} />
-        <Route path='/' element={<Login />} />
+        <Route path='/adminlogin' element={<AdminLogin />}/>
+        <Route path='/' element={<Login/>} />
+        <Route path='/adminPage' element={<AdminPage/>}/>
+        <Route path='/addcar' element={<AddCar/>}/>
+        <Route path='/editcar' element={<EditCar/>}/>
+        <Route path='/bookingcar' element={<CarBooking/>}/>
       </Routes>
     </BrowserRouter>
   );

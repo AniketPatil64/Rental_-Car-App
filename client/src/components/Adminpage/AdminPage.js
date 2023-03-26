@@ -9,7 +9,7 @@ function AdminPage() {
   const [cardetails,setcardetails] = useState(false);
    const navigate = useNavigate();
    const EditCarDetailPage =()=>{
-    navigate("/editcardeatils")
+    navigate("/editcar")
     setcardetails(true)
    }
   return (

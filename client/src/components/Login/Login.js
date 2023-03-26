@@ -31,7 +31,7 @@ function Login() {
         .then((response) => {
           // handle success response from server
           console.log(response.data);
-          navigate('/dashboard'); // redirect user to dashboard after successful login
+          navigate('/bookingcar'); // redirect user to dashboard after successful login
         })
         .catch((error) => {
           // handle error response from server
