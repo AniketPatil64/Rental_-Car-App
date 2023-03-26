@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon index.js"
+    "start": "nodemon server.js",
+    "client": "npm start --prefix ./client"
   },
   "keywords": [],
   "author": "",
@@ -19,10 +20,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.2",
     "morgan": "^1.10.0",
-<<<<<<< HEAD
     "nodemon": "^2.0.22",
-=======
->>>>>>> 30b594eb4139c782379419b1321110d829d49c54
     "validator": "^13.9.0"
   }
 }
