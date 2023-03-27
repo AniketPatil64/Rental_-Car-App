@@ -1,6 +1,6 @@
 const express = require('express');
 const { getAlluser, registerController, loginController } = require('../controllers/userController');
-
+const {adminregister,adminloginController} = require('../controllers/adminController');
 const Cardetails = require("../models/CarModel")
 
 
@@ -16,8 +16,12 @@ router.post('/register',registerController)
 //CREATE LOGIN || POST
 router.post('/login',loginController)
 
+
+//CREATE ADMIN || POST
+router.post('/adminregister',adminregister);
+
 //CREATE LOGIN || POST
-router.post('/adminlogin',loginController)
+router.post('/adminlogin',adminloginController)
 
 
 router.get("/adminpage", async (req, res) => {
