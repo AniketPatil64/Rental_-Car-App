@@ -3,116 +3,109 @@ import "./Register.css";
 import Back from '../Image/Back.png'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
-function Register() {
-  const JWT_SECRET='createwebforcarrentapplicationusingmernstack'
-  const [formdata,setformdata]= useState({
-      name:"",
-      email:"",
-      contact:"",
-      password:"",
-      confirmPassword:""
-  })
 
-  const HandleChange = (e)=>{
-    const {name,value} = e.target
+
+function Register() {
+  const navigate = useNavigate();
+  const [formdata, setformdata] = useState({
+    name: "",
+    email: "",
+    contact: "",
+    password: "",
+    cpassword: ""
+  });
+
+  const HandleChange = (e) => {
+    const { name, value } = e.target
     setformdata({
       ...formdata,
-      [name]:value
+      [name]: value
     })
+    console.log(formdata)
+
   }
 
-  //for navigate we will use
-  const navigate = useNavigate()
-
-  const handleSubmit = async(e) => {
-    e.preventDefault();
-        //console.log(input);
-        
-        try{
-          
-          const {data}=await axios.post('/api/v1/user/register',
-          {username:formdata.name,email:formdata.email,contact:formdata.contact,password:formdata.password,confirmPassword:formdata.confirmPassword});
-          if(data.sucess){
-            alert.success('User Register Sucessfully');
-            navigate('/login');
-          }
-        }catch(err){
-            console.log(err);
-        }
-    
-  };
+  const Submitdata = () => {
+    axios.post("http://localhost:8000/api/v1/user/register", formdata)
+      .then((resp) => {
+        console.log(resp)
+        navigate('/')
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 
   return (
+    <div>
+      <div className='image'>
+        <img src={Back} alt="Background Image" />
+        <div className='line'>
+          <h1>All you needed was a wheel in Your hand and four on the road.</h1>
+        </div>
 
-    <div className='image'>
-                <img src={Back} alt="Background Image" />
-                <div className='line'>
-                    <h1>All you needed was a wheel in Your hand and four on the road.</h1>
-                </div>
+        <div className="registerform">
+          <div className="registration-form">
+            <h5>Register in your Account</h5>
+            <input
+              type="text"
+              name="name"
+              value={formdata.name}
+              //value={name}
+              //onChange={(e) => { setName(e.target.value) }}
+              onChange={HandleChange}
+              placeholder='Name'
+            />
+            <br />
+            <input
+              type="email"
+              name="email"
+              value={formdata.email}
+              //value={email}
+              onChange={HandleChange}
+              //onChange={(e) => { setEmail(e.target.value) }}
+              placeholder='email'
+            />
+            <br />
+            <input
+              type="text"
+              name="contact"
+              value={formdata.contact}
+              //value={contact}
+              onChange={HandleChange}
+              //onChange={(e) => { setcontact(e.target.value) }}
+              placeholder='contact'
+            />
+            <br />
+            <input
+              type="password"
+              name="password"
+              value={formdata.password}
+              //value={password}
+              onChange={HandleChange}
+              //onChange={(e) => { setPassword(e.target.value) }}
+              placeholder='password'
+            />
+            <br />
+            <input
+              type="password"
+              name="cpassword"
+              onChange={HandleChange}
+              value={formdata.cpassword}
+              //onChange={(e) => { setcPassword(e.target.value) }}
+              //value={cpassword}
+              placeholder='confirm password'
+            />
+            <br />
+            <div>
+              <button onClick={() => Submitdata()} type="submit">Submit</button>
+            </div>
 
-    <div className="registerform">
-    <form onSubmit={handleSubmit} className="registration-form">
-    <h5>Register in your Account</h5>
-        <input
-          type="text"
-          name="name"
-          onChange={HandleChange}
-          placeholder='Name'
-        />
-
-
-       <br/>
-
-        <input
-          type="email"
-          email="email"
-          onChange={HandleChange}
-          placeholder='email'
-        />
-
-
-      <br/>
-
-        <input
-          type="text"
-          contact="contact"
-          onChange={HandleChange}
-          placeholder='contact'
-        />
-
-
-      <br/>
-
-        <input
-          type="password"
-          password="password"
-          onChange={HandleChange}
-          placeholder='password'
-        />
-
-
-      <br/>
-
-        <input
-          type="password"
-          confirmPassword="confirmPassword"
-          onChange={HandleChange}
-          placeholder='confirm password'
-        />
-
-
-      <br/>
-      <div>
-         <a href="/" onClick={() => navigate('/login')}>Register</a>
+          </div>
+        </div>
       </div>
-      <div>
-      <button type="submit">Register</button>
-      </div>
-
-    </form>
     </div>
-    </div>
-  );
+  )
 }
 
-export default Register;
+export default Register

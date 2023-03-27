@@ -6,41 +6,66 @@ import './Login.css'
 import axios from 'axios'
 
 function Login() {
+    const token = process.env.REACT_APP_MY_TOKEN;
+
     const navigate = useNavigate();
-    const [formdata,setformdata]=useState({
-        name:"",
-        password:""
-    })
+    // const [formdata,setformdata]=useState({
+    //     name:"",
+    //     password:""
+    // })
 
-    const HandleChange = (e)=>{
-        const {name,value} = e.target
-        setformdata({
-          ...formdata,
-          [name]:value
-        })
-      }
+    // const HandleChange = (e)=>{
+    //     const {name,value} = e.target
+    //     setformdata({
+    //       ...formdata,
+    //       [name]:value
+    //     })
+    //   }
 
-      const handleSubmit = (e)=>{
-        e.preventDefault(); // prevent default form submission behavior
+    //   const handleSubmit = (e)=>{
+    //     e.preventDefault(); // prevent default form submission behavior
 
-        // send a POST request to your backend API endpoint with user's email and password
-        axios.post('/api/v1/user/login', {
-          email: formdata.email,
-          password: formdata.password
-        })
-        .then((response) => {
-          // handle success response from server
-          console.log(response.data);
-          navigate('/bookingcar'); // redirect user to dashboard after successful login
-        })
-        .catch((error) => {
-          // handle error response from server
+    //     // send a POST request to your backend API endpoint with user's email and password
+    //     axios.post('/api/v1/user/login', {
+    //       email: formdata.email,
+    //       password: formdata.password
+    //     })
+    //     .then((response) => {
+    //       // handle success response from server
+    //       console.log(response.data);
+    //       navigate('/dashboard'); // redirect user to dashboard after successful login
+    //     })
+    //     .catch((error) => {
+    //       // handle error response from server
+    //       console.error(error);
+    //       // display error message to user
+    //       alert('Invalid email or password. Please try again.');
+    //     });
+     // }
+
+     const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+      });
+    
+      const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+          const { data } = await axios.post("/api/v1/user/login", formData);
+          localStorage.setItem(`${token}`, data.token);
+          alert("User logged in successfully!");
+        } catch (error) {
           console.error(error);
-          // display error message to user
-          alert('Invalid email or password. Please try again.');
+          alert("Failed to log in user.");
+        }
+      };
+    
+      const HandleChange = (event) => {
+        setFormData({
+          ...formData,
+          [event.target.name]: event.target.value,
         });
-      }
-
+    }
     return (
         <div className='login flex flex-col'>
             <div className='left '>
@@ -87,7 +112,7 @@ function Login() {
                 </div>
             </div>
         </div>
-                </div>
+    </div>
 
     )
 }

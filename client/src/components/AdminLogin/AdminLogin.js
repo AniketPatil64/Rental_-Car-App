@@ -27,7 +27,7 @@ function AdminLogin() {
         .then((response) => {
           // handle success response from server
           console.log(response.data);
-          navigate('/adminpage'); // redirect user to dashboard after successful login
+          navigate('/addcar'); // redirect user to dashboard after successful login
         })
         .catch((error) => {
           // handle error response from server
@@ -76,6 +76,10 @@ function AdminLogin() {
                             Forgot Password?
                         </a>
                         <button type="submit">Log In</button>
+
+                        <a href="/adminregister" className="forgot-password-link">
+                            Create new Account
+                        </a>
                     </form>
                 </div>
             </div>

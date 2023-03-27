@@ -1,0 +1,110 @@
+import React, { useState } from "react";
+import "./Adminregister.css";
+import Back from '../Image/Back.png'
+import axios from 'axios'
+import { useNavigate } from "react-router-dom";
+
+function Adminregister() {
+    const navigate = useNavigate();
+    const [formdata, setformdata] = useState({
+      name: "",
+      email: "",
+      contact: "",
+      password: "",
+      cpassword: ""
+    });
+  
+    const HandleChange = (e) => {
+      const { name, value } = e.target
+      setformdata({
+        ...formdata,
+        [name]: value
+      })
+      console.log(formdata)
+  
+    }
+  
+    const Submitdata = () => {
+      axios.post("http://localhost:8000/api/v1/user/adminregister", formdata)
+        .then((resp) => {
+          console.log(resp)
+          navigate('/adminlogin')
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+  
+    return (
+      <div>
+        <div className='image'>
+          <img src={Back} alt="Background Image" />
+          <div className='line'>
+            <h1>All you needed was a wheel in Your hand and four on the road.</h1>
+          </div>
+  
+          <div className="registerform">
+            <div className="registration-form">
+              <h5>Register in your Account</h5>
+              <input
+                type="text"
+                name="name"
+                value={formdata.name}
+                //value={name}
+                //onChange={(e) => { setName(e.target.value) }}
+                onChange={HandleChange}
+                placeholder='Name'
+              />
+              <br />
+              <input
+                type="email"
+                name="email"
+                value={formdata.email}
+                //value={email}
+                onChange={HandleChange}
+                //onChange={(e) => { setEmail(e.target.value) }}
+                placeholder='email'
+              />
+              <br />
+              <input
+                type="text"
+                name="contact"
+                value={formdata.contact}
+                //value={contact}
+                onChange={HandleChange}
+                //onChange={(e) => { setcontact(e.target.value) }}
+                placeholder='contact'
+              />
+              <br />
+              <input
+                type="password"
+                name="password"
+                value={formdata.password}
+                //value={password}
+                onChange={HandleChange}
+                //onChange={(e) => { setPassword(e.target.value) }}
+                placeholder='password'
+              />
+              <br />
+              <input
+                type="password"
+                name="cpassword"
+                onChange={HandleChange}
+                value={formdata.cpassword}
+                //onChange={(e) => { setcPassword(e.target.value) }}
+                //value={cpassword}
+                placeholder='confirm password'
+              />
+              <br />
+              <div>
+                <button onClick={() => Submitdata()} type="submit">Submit</button>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+}
+
+export default Adminregister;

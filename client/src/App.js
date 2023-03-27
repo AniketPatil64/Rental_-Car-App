@@ -18,6 +18,7 @@ function App() {
       <Routes>
         <Route path='/register' element={<Register />} />
         <Route path='/adminlogin' element={<AdminLogin />}/>
+        <Route path='/adminregister' element={<Adminregister/>} />
         <Route path='/' element={<Login/>} />
         <Route path='/adminPage' element={<AdminPage/>}/>
         <Route path='/addcar' element={<AddCar/>}/>
