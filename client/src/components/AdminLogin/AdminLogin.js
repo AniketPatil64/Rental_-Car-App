@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { Button } from "react-bootstrap";
 import axios from 'axios'
+import Header from '../Header/Header';
 function AdminLogin() {
     const navigate = useNavigate();
     const [formdata,setformdata]=useState({
@@ -20,14 +22,14 @@ function AdminLogin() {
         e.preventDefault(); // prevent default form submission behavior
 
         // send a POST request to your backend API endpoint with user's email and password
-        axios.post('/api/v1/user/adminlogin', {
+        axios.post('http://localhost:3030/api/v1/user/adminlogin', {
           email: formdata.email,
           password: formdata.password
         })
         .then((response) => {
           // handle success response from server
           console.log(response.data);
-          navigate('/adminpage'); // redirect user to dashboard after successful login
+          navigate('/adminPage'); // redirect user to dashboard after successful login
         })
         .catch((error) => {
           // handle error response from server
@@ -37,14 +39,17 @@ function AdminLogin() {
         });
     };
   return (
-    <div className='login flex flex-col'>
+    <>
+      <Header/>
+       <div className='login flex flex-col'>
             <div className='left '>
             <div className='image'>
 
                 <div className='line'>
                     <h1>All you needed was a wheel in Your hand and four on the road.</h1>
                 </div>
-
+                 <br/>
+                 <br/>
                 <div className='routers'>
                     <span className='register' onClick={() => navigate('/')}>
                         User sign in
@@ -75,12 +80,20 @@ function AdminLogin() {
                         <a href="/" className="forgot-password-link">
                             Forgot Password?
                         </a>
-                        <button type="submit">Log In</button>
+                        <Button type="submit">Log In</Button>
+                        <div>
+                        <a href="/adminregister" className="forgot-password-link">
+                            Create new Account
+                        </a>
+                        </div>
+                        
                     </form>
                 </div>
             </div>
         </div>
-                </div>
+    </div>
+    </>
+    
   )
 }
 

@@ -121,8 +121,8 @@ function AddCar() {
               <input
                 type="number"
                 name="perkm"
-                c
-                lassName="inp-perkm"
+                
+                className="inp-perkm"
                 onChange={HandleChange}
               />
             </div>
@@ -174,13 +174,15 @@ function AddCar() {
                 setimage(e.target.files[0]);
               }}
             />
-           <div> <Button
-              variant="primary"
-              className="btn-add m-l"
+           <div> <button
+               className="add-button"
               onClick={HandleImage}
             >
               Add
-            </Button></div>
+            </button>
+            </div>
+
+            <img src={formdata.image} alt="carimg" className="select-img"/>
           </div>
 
           <div className="cardetails flex flex-dir-c">
@@ -205,7 +207,7 @@ function AddCar() {
             className="btn-add m-l"
             onClick={Submitdata}
           >
-            Add
+            Save
           </Button>
         </div>
       </div>

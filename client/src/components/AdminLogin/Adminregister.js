@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import "./Register.css";
+import "./Adminregister.css";
 import Back from '../Image/Back.png'
 import axios from 'axios'
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import {Button} from 'react-bootstrap'
-import Header from "../Header/Header";
 
 
-function Register() {
+function Adminregister() {
   const navigate = useNavigate();
   const [formdata, setformdata] = useState({
     name: "",
@@ -28,10 +27,12 @@ function Register() {
   }
 
   const Submitdata = () => {
-    axios.post("http://localhost:3030/api/v1/user/register", formdata)
+    axios.post("http://localhost:3030/api/v1/user/adminregister", formdata)
       .then((resp) => {
-        console.log(resp)
-        navigate('/')
+        //console.log(resp)
+        alert('successfully created admin account')
+        navigate('/adminlogin')
+
       })
       .catch((err) => {
         console.log(err);
@@ -40,7 +41,6 @@ function Register() {
 
   return (
     <div>
-       <Header/>
       <div className='image'>
         <img src={Back} alt="Background Image" />
         <div className='line'>
@@ -49,7 +49,7 @@ function Register() {
 
         <div className="registerform">
           <div className="registration-form">
-            <h5 className="title">Register in your Account</h5>
+            <h5 className="title">Register in your Admin Account</h5>
             <input
               type="text"
               name="name"
@@ -99,13 +99,11 @@ function Register() {
               //value={cpassword}
               placeholder='confirm password'
             />
-            
-            <div className="signin">
-                <a href="/">SignIn</a>
+            <br />
+            <div>
+              <Button onClick={() => Submitdata()} type="submit" variant="primary">Submit</Button>
             </div>
-
-            <Button variant="primary" className="Register" onClick={() => Submitdata()} type="submit">Submit</Button>
-           
+           <h6><a href="/">SignIn</a></h6>
           </div>
         </div>
       </div>
@@ -113,4 +111,4 @@ function Register() {
   )
 }
 
-export default Register
+export default Adminregister;

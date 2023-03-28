@@ -2,12 +2,12 @@ import React,{useState} from "react";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
+import './EditCar.css'
 import axios from "axios";
 import "../AddCar/AddCar.css";
-function EditCar() {
+function EditCar(singlecar) {
   const [image, setimage] = useState();
   const [url,seturl] = useState("");
-  const [id,setid]=useState("");
   const navigate = useNavigate();
   
   const [formdata, setformdata] = useState({
@@ -52,7 +52,7 @@ function EditCar() {
     
   };
   const Submitdata = () => {
-    axios.put(`http://localhost:3030/api/v1/user/editcar/:${id}`, (formdata))
+    axios.put(`http://localhost:3030/api/v1/user/editcar/:${singlecar.singlecar._id}`, (formdata))
       .then((resp) => {
         resp.json();
       
@@ -74,6 +74,7 @@ function EditCar() {
   
   return (
     <form className="container">
+    <h1>Edit CarDetails</h1>
       <div className="boxes">
         <div className="Left-Box">
           <div className="carName flex flex-dir-c m-t m-b">
@@ -83,6 +84,7 @@ function EditCar() {
               name="carname"
               className="inp-carname"
               onChange={HandleChange}
+              placeholder={singlecar.singlecar.carname}
             />
           </div>
           <div className="type&model flex j-content m-t m-b">
@@ -93,6 +95,7 @@ function EditCar() {
                 name="type"
                 className="inp-type"
                 onChange={HandleChange}
+                placeholder={singlecar.singlecar.type}
               />
             </div>
             <div className="model flex flex-dir-c">
@@ -102,6 +105,7 @@ function EditCar() {
                 name="model"
                 className="inp-model"
                 onChange={HandleChange}
+                placeholder={singlecar.singlecar.model}
               />
             </div>
           </div>
@@ -114,6 +118,7 @@ function EditCar() {
                 name="milage"
                 className="inp-milage"
                 onChange={HandleChange}
+                placeholder={singlecar.singlecar.milage}
               />
             </div>
             <div className="perkm flex flex-dir-c m-t m-b">
@@ -124,6 +129,7 @@ function EditCar() {
                 c
                 lassName="inp-perkm"
                 onChange={HandleChange}
+                placeholder={singlecar.singlecar.perkm}
               />
             </div>
           </div>
@@ -159,7 +165,7 @@ function EditCar() {
 
           <div className="description flex flex-dir-c m-t m-b">
             <label>Description : </label>
-            <input type="text" name="description" onChange={HandleChange} />
+            <input type="text" name="description" onChange={HandleChange}   placeholder={singlecar.singlecar.description}/>
           </div>
         </div>
 
@@ -174,45 +180,48 @@ function EditCar() {
                 setimage(e.target.files[0]);
               }}
             />
+
            <div> <Button
               variant="primary"
-              className="btn-add m-l"
+              className="btn-add m-l  btn-add2"
               onClick={HandleImage}
             >
+
               Add
             </Button></div>
+            <img src={formdata.image} alt="carimg" className="select-img1"/>
           </div>
 
           <div className="cardetails flex flex-dir-c">
             <label>Car Details :</label>
-            <input type="text" name="cardetails" onChange={HandleChange} />
+            <input type="text" name="cardetails" onChange={HandleChange} placeholder={singlecar.singlecar.cardetails}/>
           </div>
 
           <div className="details flex flex-dir-c">
             <label>Details :</label>
-            <input type="text" name="details" onChange={HandleChange} />
+            <input type="text" name="details" onChange={HandleChange} placeholder={singlecar.singlecar.details}/>
           </div>
         </div>
       </div>
       <div className="btns flex j-content ">
         <div className="btn-cancel ">
           <Button variant="secondary btn-cancel m-r"
-          onClick={()=>{navigate('/adminPage')}}>Cancel</Button>
+         onClick={()=>{window.location.reload()}}>Cancel</Button>
         </div>
-        <Button
+        {/* <Button
             variant="danger"
             className="btn-add m-l"
-            onClick={Submitdata}
+            onClick={()=>{window.location.reload()}}
           >
             delete
-          </Button>
+          </Button> */}
         <div className="bnt-add">
         
           <Button
             variant="primary"
             className="btn-add m-l"
             onClick={Submitdata}
-          >Add
+          >save
           </Button>
         </div>
       </div>

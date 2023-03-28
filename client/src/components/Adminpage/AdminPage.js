@@ -4,18 +4,24 @@ import { Button } from 'react-bootstrap';
 import './Adminpage.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-export function MainId(idd) {
-  return idd;
-}
+import EditCar from '../EditCar/EditCar.js';
+import Header from '../Header/Header.js';
+
 function AdminPage() {
   const [cardetails,setcardetails] = useState(false);
   const [data,setdata] = useState([])
   const [id,setid] = useState("")
+  const [singlecar,setsingkecar] = useState({
+    carname:"", type:"", model:"", milage:"", perkm:"", description:"", cardetails:"", details:"",_id:""
+  })
    const navigate = useNavigate();
 
-   const EditCarDetailPage =(ID)=>{
-    MainId(ID)
-    navigate(`/editcar/:${ID}`)
+   const EditCarDetailPage =(Item)=>{
+    const {carname, type, model, milage, perkm, description, cardetails, details,_id} = Item
+   setsingkecar({
+    carname:carname, type:type, model:milage, milage, perkm:perkm, description:description, cardetails:description, details:details,_id:_id
+   })
+   setcardetails(true)
    }
    useEffect(()=>{
     axios.get("http://localhost:3030/api/v1/user/adminpage")
@@ -26,10 +32,11 @@ function AdminPage() {
   },[data.length])
   return (
     <>
-      <div className="container">
-      {/* <Header/> */}
+     <Header/>
+      {
+        !cardetails && 
+        <div className="container">
       <h1 className='Hello'>Hello Admin ...</h1>
-      <button>add</button>
       <div className='Headerbar'>
       <h4>Cars</h4>
         <Button 
@@ -57,7 +64,7 @@ function AdminPage() {
             <div key={index} className="card">
               <img src={item.image} 
               alt={item.name}
-              onClick={()=>{EditCarDetailPage(item._id)}}
+              onClick={()=>{EditCarDetailPage(item)}}
               />
               <p className='seat'>5 Persons</p>
               <div className="card-details">
@@ -71,6 +78,11 @@ function AdminPage() {
           ))}
         </div>
       </div>
+      }
+      {
+        cardetails && 
+        <EditCar singlecar={singlecar}/>
+      }
     </>
   );
 }

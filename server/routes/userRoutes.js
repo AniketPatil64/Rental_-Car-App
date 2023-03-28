@@ -1,5 +1,7 @@
 const express = require('express');
 const { getAlluser, registerController, loginController } = require('../controllers/userController');
+const {adminregister,adminloginController} = require('../controllers/adminController');
+const {getbookdetail,bookdetailcontrol,updatebooking} = require('../controllers/bookdetailcontrol');
 const Cardetails = require("../models/CarModel")
 
 //router object 
@@ -14,8 +16,24 @@ router.post('/register',registerController)
 //CREATE LOGIN || POST
 router.post('/login',loginController)
 
+//CREATE ADMIN || POST
+router.post('/adminregister',adminregister);
+
 //CREATE LOGIN || POST
-router.post('/adminlogin',loginController)
+router.post('/adminlogin',adminloginController)
+
+//CREATE BOOKDETAILS OF DESTINATION AND DATE || POST
+
+router.get('/getbookingdetails',getbookdetail);
+
+
+//CREATE BOOKDETAILS OF DESTINATION AND DATE || POST
+
+router.post('/bookingdetails',bookdetailcontrol);
+
+//UPDATE BOOKDETAILS OF DESTINATION AND DATE || PUT
+
+router.put('/updatebooking/:id',updatebooking);
 
 
 router.get("/adminpage", async (req, res) => {
@@ -28,26 +46,8 @@ router.get("/adminpage", async (req, res) => {
   });
 
 
-  router.post("/newcar", async (req, res) => {
-    console.log(req.body)
-    try {
-      const { carname, type, model, milage, perkm, availablefrom, availabletill,image, description, cardetails, details } =  req.body
-      
-      const carData = new Cardetails({ carname, type, model, milage, perkm, availablefrom, availabletill, image, description, cardetails, details });
-      await carData.save();
-  
-      res.status(201).json({ message: 'Car details saved successfully' });
-    } catch(error){
-      console.error(error);
-      res.status(500).json({ error:'Internal server error'});
-    }
-  });
-
-
-
-router.put(`/editcar/:id`, async (req, res) => {
-  try {
-    const { id } = req.params;
+  router.post("/newcar", async (req, resp) => {
+    console.log(req.body);
     const {
       carname,
       type,
@@ -61,52 +61,37 @@ router.put(`/editcar/:id`, async (req, res) => {
       cardetails,
       details,
     } = req.body;
+    const CarData = new Cardetails({
+      carname,
+      type,
+      model,
+      milage,
+      perkm,
+      availablefrom,
+      availabletill,
+      image,
+      description,
+      cardetails,
+      details,
+    });
+    CarData.save()
+      .then(() => {
+        resp.send({ message: "successful" });
+      })
+      .catch((err) => {
+        resp.send({ message: err });
+        console.log(err);
+      });
+  });
 
-    const car = await Cardetails.findById({_id:id});
 
-    if (!car) {
-      return res.status(404).json({ error: "Car not found" });
-    }
+  router.put("/editcar", (req, resp) => {
+    resp.send("editcar");
+  });
 
-    car.carname = carname || car.carname;
-    car.type = type || car.type;
-    car.model = model || car.model;
-    car.milage = milage || car.milage;
-    car.perkm = perkm || car.perkm;
-    car.availablefrom = availablefrom || car.availablefrom;
-    car.availabletill = availabletill || car.availabletill;
-    car.image = image || car.image;
-    car.description = description || car.description;
-    car.cardetails = cardetails || car.cardetails;
-    car.details = details || car.details;
-
-    const updatedCar = await car.save();
-
-    res.status(200).json({ message: "Car details updated successfully", data: updatedCar });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
-router.delete("/editcar/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    const car = await Cardetails.findById(id);
-
-    if (!car) {
-      return res.status(404).json({ error: "Car not found" });
-    }
-
-    await car.remove();
-
-    res.status(200).json({ message: "Car deleted successfully" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
+  router.delete("/editcar", (req, resp) => {
+    resp.send("delete");
+  });
 
 
 module.exports = router;

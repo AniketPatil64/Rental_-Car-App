@@ -86,7 +86,9 @@ opacity: 1;
 input{
     border: 1px solid #CCCCCC;
     border-radius: 0.5rem;
+    
 }
+
 .description > input {
     height: 8rem;
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -104,5 +106,31 @@ input{
 .btn-add,.btn-cancel{
     padding: 0.7rem 1.5rem;
 }
+.select-img{
+    width: 105px;
+    height: 105px;
+    position: absolute;
+    top: 170px;
+    right: 600px;
+    
+}
 
+.btn-add1 {
+    position: absolute;
+    top: 200px;
+    right: 365px;
 
+}
+
+.inp-img {
+    
+    /* padding-left: 30px;
+    height: 40px;
+    width: 370px; */
+   padding-bottom: 33px;
+}
+
+.add-button{
+    background-color: white;
+    color: black;
+}
