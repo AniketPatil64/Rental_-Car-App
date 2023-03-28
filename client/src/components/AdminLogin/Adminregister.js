@@ -47,9 +47,10 @@ function Adminregister() {
           <h1>All you needed was a wheel in Your hand and four on the road.</h1>
         </div>
 
-        <div className="registerform">
+        <div className="registerform-1">
           <div className="registration-form">
-            <h5 className="title">Register in your Admin Account</h5>
+            <h5 className="text-1">Register in your Admin Account</h5>
+            <div id="input">
             <input
               type="text"
               name="name"
@@ -60,6 +61,7 @@ function Adminregister() {
               placeholder='Name'
             />
             <br />
+            <div></div>
             <input
               type="email"
               name="email"
@@ -99,11 +101,13 @@ function Adminregister() {
               //value={cpassword}
               placeholder='confirm password'
             />
+            </div>
             <br />
             <div>
-              <Button onClick={() => Submitdata()} type="submit" variant="primary">Submit</Button>
+              <Button onClick={() => Submitdata()} type="submit" variant="primary" className="btn-adm">Submit</Button>
             </div>
            <h6><a href="/">SignIn</a></h6>
+           
           </div>
         </div>
       </div>

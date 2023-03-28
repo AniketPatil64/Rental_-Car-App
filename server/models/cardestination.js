@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const cardestinationSchema = mongoose.Schema({
   startdate: {
-    type: Date,
+    type: String,
     required: [true, 'startdate is required']
   },
 
   enddate: {
-    type: Date,
+    type: String,
     required: [true, 'enddate is required']
   },
 

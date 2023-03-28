@@ -134,3 +134,13 @@ input{
     background-color: white;
     color: black;
 }
+
+.click{
+   padding: 5px 5px;
+   background-color: #ccc;
+}
+
+.click:hover{
+    cursor: pointer;
+    background-color: rgb(34, 173, 228);
+}

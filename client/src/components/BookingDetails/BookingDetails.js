@@ -1,14 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./BookingDetails.css";
 import { Button } from "react-bootstrap";
-//import { useNavigate } from "react-router-dom";
+// import Geolocation from 'react-native-geolocation-service';
+// import MapView, { Polyline } from 'react-native-maps';
 import MyBooking from '../MyBooking/MyBooking'
+import axios from "axios";
 
 const BookingDetails = (singlecar) => {
     const [mybook,setmybook] = useState(false)
   //const navigate = useNavigate();
   const currentDate = new Date().toLocaleDateString(); // get current date in format MM/DD/YYYY
   const currentTime = new Date().toLocaleTimeString();
+  const [destination,setdestination] = useState([])
+  useEffect(() => {
+    axios.get("http://localhost:3030/api/v1/user/getbookingdetails")
+    .then((resp) => {
+      setdestination(resp.data.users[resp.data.users.length-1])
+    })
+    .catch((error) => {
+      console.log("showing error",error);
+    });
+}, [destination.length]);
+console.log(destination)
+  const puneCoords = {
+    latitude: 18.5204,
+    longitude: 73.8567,
+  };
+  
+  const mumbaiCoords = {
+    latitude: 19.0760,
+    longitude: 72.8777,
+  };
+  
+  // Calculate the route between Pune and Mumbai
+  const routeCoords = [
+    puneCoords,
+    mumbaiCoords,
+  ];
   return (
     <>
        {!mybook &&
@@ -51,19 +79,20 @@ const BookingDetails = (singlecar) => {
               </div>
 
               <div>
-                <p>Pune</p>
-                <p>Mumbai</p>
-                <p>16-June-2019</p>
-                <p>17-June-2019</p>
+                <p>{destination.origin}</p>
+                <p>{destination.destination}</p>
+                <p>{destination.startdate}</p>
+                <p>{destination.enddate}</p>
               </div>
 
               <div className="mini-3rd-div-img">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28788.78777019961!2d85.16637504100797!3d25.58502223107953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed5f5876b1ada3%3A0xc899c99a139e72e8!2sMahindra%20Kiran%20Automobiles!5e0!3m2!1sen!2sin!4v1679926472552!5m2!1sen!2sin"
-                  allowfullscreen=""
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                ></iframe>
+              {/* <MapView >
+  <Polyline
+    coordinates={routeCoords}
+    strokeColor="#000"
+    strokeWidth={3}
+  />
+</MapView> */}
               </div>
             </div>
           </div>

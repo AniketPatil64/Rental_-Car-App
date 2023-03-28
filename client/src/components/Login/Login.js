@@ -59,7 +59,8 @@ function Login() {
                 <div className='right'>
                     <div className='loginform'>
                         <form onSubmit={handleSubmit} className="login-form">
-                            <h5>Sign in your Account</h5>
+                            <h5 className='h5-edited'>Sign in your Account</h5>
+                            <div className='login-input'>
                             <input
                                 type="text"
                                 id='email'
@@ -75,6 +76,7 @@ function Login() {
                                 onChange={HandleChange}
                                 placeholder='Password'
                             />
+                            </div>
                             <br />
                             <a href="/" className="forgot-password-link">
                                 Forgot Password?

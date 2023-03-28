@@ -1,20 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./EditBookDetail.css";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const EditBookingDetails = (editBookedcar) => {
   const navigate = useNavigate();
   console.log(editBookedcar)
   const currentDate = new Date().toLocaleDateString(); // get current date in format MM/DD/YYYY
   const currentTime = new Date().toLocaleTimeString();
-  const [mybook,setmybook] = useState(false)
+  const [mybook,setmybook] = useState(false);
+  const [destination,setdestination] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:3030/api/v1/user/getbookingdetails")
+    .then((resp) => {
+      setdestination(resp.data.users[resp.data.users.length-1])
+    })
+    .catch((error) => {
+      console.log("showing error",error);
+    });
+}, [destination.length]);
+console.log(destination)
   return (
     <>
         <div className="EditBox flex">
         <div className="left-box Left-Edit-Section">
           <div>
-            <h3 className="title1">Edit Booking Details</h3>
+            <h3 className="edit-title1">Edit Booking Details</h3>
           </div>
 
           <div>
@@ -50,10 +62,10 @@ const EditBookingDetails = (editBookedcar) => {
               </div>
 
               <div>
-                <p>Pune</p>
-                <p>Mumbai</p>
-                <p>16-June-2019</p>
-                <p>17-June-2019</p>
+              <p>{destination.origin}</p>
+                <p>{destination.destination}</p>
+                <p>{destination.startdate}</p>
+                <p>{destination.enddate}</p>
               </div>
 
               <div className="mini-3rd-div-img">
@@ -89,7 +101,7 @@ const EditBookingDetails = (editBookedcar) => {
 
         <div className="right-box Right-Edit-Section">
           <div>
-            <h3 className="title2">Payment Details</h3>
+            <h3 className="edit2-title2">Payment Details</h3>
           </div>
 
           <div>

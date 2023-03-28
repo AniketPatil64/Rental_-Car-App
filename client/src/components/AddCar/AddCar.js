@@ -165,7 +165,7 @@ function AddCar() {
 
         <div className="Right-Box">
           <div className="image">
-            <label>Image :</label>
+            <label  className="click" onClick={HandleImage}>Click-Here:</label>
             <input
               type="file"
               name="image"
@@ -174,13 +174,7 @@ function AddCar() {
                 setimage(e.target.files[0]);
               }}
             />
-           <div> <button
-               className="add-button"
-              onClick={HandleImage}
-            >
-              Add
-            </button>
-            </div>
+           
 
             <img src={formdata.image} alt="carimg" className="select-img"/>
           </div>

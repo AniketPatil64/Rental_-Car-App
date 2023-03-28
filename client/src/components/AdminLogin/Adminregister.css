@@ -1,4 +1,4 @@
-.registerform {
+.registerform-1 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,7 +6,7 @@
     height: 601px;
 }
 
-.registerform {
+.registerform-1 {
     position: absolute;
     top: 200px;
     left: 1250px;
@@ -18,8 +18,19 @@
 
 }
 
-.registerform button{
-    float: right;
+.register-form .text-1{
+    padding: 10px;
+}
+
+#input{
+    position: relative;
+    bottom: 50px;
+}
+
+
+.register-form button{
+    position: relative;
+    top: 50px;
 }
 
 input{
@@ -37,15 +48,23 @@ h5{
     opacity: 1;
 }
 
+h6{
+    position: relative;
+    bottom: 65px;
+}
 
-button {
+
+.btn-adm{
     width: 128px;
     height: 48px;
-    position:relative;
-    top: 80px;
+    /* position:relative;
+    top: 80px; */
     color: #FFFFFF;
     background: #4E94F4 0% 0% no-repeat padding-box;
     border-radius: 8px;
     opacity: 1;
     float: right;
+    position: relative;
+    top: -40px;
+    right: 120px;
 }

@@ -25,7 +25,7 @@
 
 .one-div img{
     width: 200px;
-    height: 180px;
+    height: 160px;
 
 
 }
@@ -86,23 +86,21 @@
    
 }
 .edit-btn{
-    padding: 8px 20px;
-    border: none;
-    outline: none;
-    border-radius: 30px;
-    margin: 30px;
+    position: relative;
+    top: 100px;
+    left: 25px;
+    padding: 10px;
+    width: 125px;
     cursor: pointer;
 
 }
 
-.can-btn{
-    padding: 8px 20px;
-    border: none;
-    outline: none;
-    border-radius: 30px;
-    margin-left: 30px;
+.canceled-btn{
+    position: relative;
+    top: 130px;
+    left: 25px;
     cursor: pointer;
-
+    height: 45px;
 }
 
 

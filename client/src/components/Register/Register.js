@@ -49,7 +49,8 @@ function Register() {
 
         <div className="registerform">
           <div className="registration-form">
-            <h5 className="title">Register in your Account</h5>
+            <h5 className="h5">Register in your Account</h5>
+            <div className="reg-input">
             <input
               type="text"
               name="name"
@@ -99,7 +100,7 @@ function Register() {
               //value={cpassword}
               placeholder='confirm password'
             />
-            
+            </div>
             <div className="signin">
                 <a href="/">SignIn</a>
             </div>

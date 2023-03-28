@@ -15,34 +15,44 @@
 }
 
 
-.registerform .title{
-    padding-top: 10px;
+.registerform h5{
+    padding-top: 80px;
 }
 
 .signin{
-    margin-bottom: 30px;
+    position: relative;
+    bottom: 65px;
 }
 
 
-input{
+/* input{
     padding-left: 30px;
     height: 40px;
     width: 370px;
 
-}
+} */
 
-.title{
+.h5{
     text-align: left;
     font: normal normal normal 22px/30px Open Sans;
     letter-spacing: 0.53px;
     color: #1B2734;
     opacity: 1;
    
+   
 }
 
 
 .Register{
     position: absolute;
-    top:500px;
-    left: 175pxk;
+    top:505px;
+    left: 200px;
+    width: 100px;
+    height: 45px;
+}
+
+.reg-input{
+    position: relative;
+    bottom: 65px;
+    right: 20px;
 }
