@@ -10,7 +10,7 @@ import Header from '../Header/Header.js';
 function AdminPage() {
   const [cardetails,setcardetails] = useState(false);
   const [data,setdata] = useState([])
-  const [id,setid] = useState("")
+  const [id,setid] = useState("");
   const [singlecar,setsingkecar] = useState({
     carname:"", type:"", model:"", milage:"", perkm:"", description:"", cardetails:"", details:"",_id:""
   })
@@ -66,7 +66,7 @@ function AdminPage() {
               alt={item.name}
               onClick={()=>{EditCarDetailPage(item)}}
               />
-              <p className='seat'>5 Persons</p>
+              {/* <p className='seat'>5 Persons</p> */}
               <div className="card-details">
                 <h3>{item.carname}</h3>
                 <p className='RSKM'>{item.milage}Rs/Km</p>
