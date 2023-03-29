@@ -85,14 +85,57 @@ router.get("/adminpage", async (req, res) => {
   });
 
 
-  router.put("/editcar", (req, resp) => {
-    resp.send("editcar");
+  router.put("/editcar/:id", async (req, res) => {
+    try {
+      const carId = req.params.id;
+      const {
+        carname,
+        type,
+        model,
+        milage,
+        perkm,
+        availablefrom,
+        availabletill,
+        image,
+        description,
+        cardetails,
+        details,
+      } = req.body;
+      const car = await Cardetails.findById(carId);
+      if (!car) {
+        return res.status(404).send({ message: "Car not found" });
+      }
+      car.carname = carname;
+      car.type = type;
+      car.model = model;
+      car.milage = milage;
+      car.perkm = perkm;
+      car.availablefrom = availablefrom;
+      car.availabletill = availabletill;
+      car.image = image;
+      car.description = description;
+      car.cardetails = cardetails;
+      car.details = details;
+      await car.save();
+      res.send({ message: "Car updated successfully" });
+    } catch (err) {
+      res.status(500).send({ message: err.message });
+    }
   });
 
-  router.delete("/editcar", (req, resp) => {
-    resp.send("delete");
+  router.delete("/editcar/:id", async (req, res) => {
+    try {
+      const carId = req.params.id;
+      const car = await Cardetails.findByIdAndDelete(carId);
+      if (!car) {
+        return res.status(404).send({ message: "Car not found" });
+      }
+      res.send({ message: "Car deleted successfully" });
+    } catch (err) {
+      res.status(500).send({ message: err.message });
+    }
   });
-
+  
 
 module.exports = router;
 

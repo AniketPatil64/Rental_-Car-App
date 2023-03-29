@@ -42,7 +42,7 @@ function CarBooking() {
             {/* <Header/> */}
             <div className='header'>
             <div className='logo'>LOGO</div>
-            <div className='bookings' onClick={()=>{navigate('/bookingorder')}}>My Booking</div>
+            {/* <div className='bookings' onClick={()=>{navigate('/')}}>My Booking</div> */}
             <div className='logout' onClick={()=>{navigate('/')}}>Logout</div>
         </div>
             <div className='total'>

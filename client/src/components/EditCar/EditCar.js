@@ -6,6 +6,8 @@ import './EditCar.css'
 import axios from "axios";
 import "../AddCar/AddCar.css";
 function EditCar(singlecar) {
+
+  console.log(singlecar.singlecar._id)
   const [image, setimage] = useState();
   const [url,seturl] = useState("");
   const navigate = useNavigate();
@@ -52,10 +54,10 @@ function EditCar(singlecar) {
     
   };
   const Submitdata = () => {
-    axios.put(`http://localhost:3030/api/v1/user/editcar/:${singlecar.singlecar._id}`, (formdata))
+    axios.put(`http://localhost:3030/api/v1/user/editcar/${singlecar.singlecar._id}`, (formdata))
       .then((resp) => {
         resp.json();
-      
+        
       })
       .then((data)=>{
         seturl(data.url);
@@ -69,7 +71,28 @@ function EditCar(singlecar) {
       });
     console.log(formdata);
     console.log(url)
-    navigate('/adminPage')
+    window.location.reload();
+  };
+
+  const Deletedata = () => {
+    axios.delete(`http://localhost:3030/api/v1/user/editcar/${singlecar.singlecar._id}`, (formdata))
+      .then((resp) => {
+        resp.json();
+        
+      })
+      .then((data)=>{
+        seturl(data.url);
+        setformdata({
+          ...formdata,
+          image: data.url
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(formdata);
+    console.log(url)
+    window.location.reload();
   };
   
   return (
@@ -171,7 +194,7 @@ function EditCar(singlecar) {
 
         <div className="Right-Box">
           <div className="image">
-            <label>Image :</label>
+            <label onClick={HandleImage}>Image :</label>
             <input
               type="file"
               name="image"
@@ -181,14 +204,15 @@ function EditCar(singlecar) {
               }}
             />
 
-           <div> <Button
+           {/* <div> <Button
               variant="primary"
               className="btn-add m-l  btn-add2"
               onClick={HandleImage}
             >
 
               Add
-            </Button></div>
+            </Button></div> */}
+            {/* <label className="image-added" onClick={HandleImage}>Image</label> */}
             <img src={formdata.image} alt="carimg" className="select-img1"/>
           </div>
 
@@ -216,6 +240,13 @@ function EditCar(singlecar) {
             delete
           </Button> */}
         <div className="bnt-add">
+
+        <Button
+            variant="danger"
+            className="btn-add m-l"
+            onClick={Deletedata}
+          >Delete
+          </Button>
         
           <Button
             variant="primary"
